@@ -62,4 +62,3 @@ class QcRestApi:
                                format(self.__domain, self.__project, "1"),
                                cookies=self.__cookies, headers=self.__headers)
         #what to do with xml?
-
