@@ -19,6 +19,15 @@ class QcRestApi:
         self.__project = "371612180_DEMO"
 
     def auth(self):
+        """Sign in function.
+
+        Login and password from self.input_auth
+
+        Returns:
+            Status code from request.
+
+        """
+
         print("Try to Sign in")
         r = self.__session.post(self.url_log, data=self.input_auth, headers=self.__headers)
         if 'LWSSO_COOKIE_KEY' in r.cookies.get_dict():
@@ -38,7 +47,12 @@ class QcRestApi:
             return r.status_code
 
     def closing_session(self):
-        #Sign out
+        """Sign out function that close connection.
+
+        Returns:
+            Status code from request.
+        
+        """
         print("Try to close a session")
         r = self.__session.delete(self.url + self.site_session, headers=self.__headers)
         if r.status_code == 200:
@@ -48,6 +62,13 @@ class QcRestApi:
             return r.status_code
 
     def extending_session(self):
+        """Extending connection function.
+
+        Returns:
+            Status code from request.
+
+        """
+        
         print("Try to extending a session")
         r = self.__session.get(self.url + self.site_session, cookies=self.__cookies, headers=self.__headers)
         if 'LWSSO_COOKIE_KEY' in r.cookies.get_dict():
