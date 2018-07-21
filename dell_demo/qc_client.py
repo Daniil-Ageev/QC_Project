@@ -7,7 +7,12 @@ import constants
 import utils
 import qc_exceptions
 import quality_center_utils
-
+import base_entity
+import run
+import tests
+import test_set
+import test_run
+import test_instance
 
 # check QA environment
 #from framework_constants import Framework
@@ -26,7 +31,7 @@ class QcClient(object):
         :type project: str
         :return: self
         """
-        self.input_auth = 'username=' + '' + '&' + 'password=' + ''
+        self.input_auth = 'username=' + '***' + '&' + 'password=' + '***'
         self.baseUrl = "https://almalmqc1250saastrial.saas.hpe.com/qcbin/"
         self.domain = "DEFAULT_371612180"
         self.url_log = "https://login.software.microfocus.com/msg/actions/doLogin.action"
@@ -182,7 +187,7 @@ class QcClient(object):
         url = "{url}{entity}".format(url=self.url, entity=entityType)
         request = self.session.post(url, data=entityData.ToXml(), headers={'Content-Type': 'application/xml',
                                                                            'Accept': 'application/json'})
-        print(request.status_code)
+        print(entityData.ToXml())
         if request.status_code == 401:
             raise qc_exceptions.QCAuthenticationError("Not logged in")
         content = json.loads(request.content)
@@ -315,6 +320,7 @@ class QcClient(object):
         releaseCycles = self.GetEntity('release-cycles',
                                        query='{{id["{0}"];start-date[<="{1}"];end-date[>="{2}"]}}'.format(id, startDate,
                                                                                                           endDate))
+
         return releaseCycles
 
     @utils.ResetSession
@@ -510,10 +516,3 @@ class QcClient(object):
         :rtype: dict
         """
         return self.CreateEntity(Entities.TEST_SETS, testSetObj)
-
-
-q = QcClient()
-q.Login()
-print(q.GetTestById(56))
-#q.UpdateEntity('defects', {'Description:': 'Hello from rest api'}, 92)
-
