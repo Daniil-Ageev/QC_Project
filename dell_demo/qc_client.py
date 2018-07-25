@@ -31,7 +31,7 @@ class QcClient(object):
         :type project: str
         :return: self
         """
-        self.input_auth = 'username=' + 'unselts@gmail.com' + '&' + 'password=' + 'Qcpassword1998'
+        self.input_auth = 'username=' + '****' + '&' + 'password=' + '*****'
         self.baseUrl = "https://almalmqc1250saastrial.saas.hpe.com/qcbin/"
         self.domain = "DEFAULT_371612180"
         self.url_log = "https://login.software.microfocus.com/msg/actions/doLogin.action"
@@ -516,6 +516,3 @@ class QcClient(object):
         :rtype: dict
         """
         return self.CreateEntity(Entities.TEST_SETS, testSetObj)
-q = QcClient()
-q.Login()
-print(q.GetEntity(entityType='tests'))

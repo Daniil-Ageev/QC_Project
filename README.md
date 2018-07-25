@@ -1,6 +1,7 @@
-This summer practice REST API project. This project connect python code with HP Quality Center.
+**This summer practice REST API project.** <br />
+This project connect python code with HP Quality Center.<br />
 What project can do:
-  a) Create any entity.
-  b) Update entity.
-  c) Find entity from their id/pathfolder/parent-id
-  d) Sign in and Log out  
+>  a) Create any entity.
+>  b) Update entity.
+>  c) Find entity from their id/pathfolder/parent-id
+>  d) Sign in and Log out  
